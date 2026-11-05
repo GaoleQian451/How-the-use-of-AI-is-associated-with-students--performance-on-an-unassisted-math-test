@@ -22,7 +22,7 @@ A limitation is that the baseline model assumes that the group effect of AI use 
 
 Paste the exact prompts that shaped the extension. Include the customized extension-selection prompt from the checkpoint and any important implementation follow-ups. Delete unused prompt blocks.
 
-> What extension could help address this limitation? Preferably, I would like to use a method covered on Exam SRM but not in this course.
+> A limitation of our project is that the baseline model assumes that the group effect of AI use is the same across the range of previous GPA and grade level in our sample. However, our box plots suggest that the group effect of AI use may differ for different grade levels. What extension could help address this limitation? Preferably, I would like to use a method covered on Exam SRM but not in this course (Stat 330: Intermediate statistical modeling with R, building on multiple linear regression. Students use matrix notation to understand regression models; assess assumptions, diagnostics, influence, and multicollinearity; compare and validate models using model-selection and predictive-performance methods; and extend regression through interactions, nonlinear predictors, and logistic regression. The course emphasizes the distinction between explanation and prediction, the tradeoff between interpretability and predictive performance, and the responsible interpretation and communication of statistical evidence.) What extension could help address this limitation? Preferably, I would like to use a method covered on Exam SRM but not in this course.
 
 ## My decisions
 

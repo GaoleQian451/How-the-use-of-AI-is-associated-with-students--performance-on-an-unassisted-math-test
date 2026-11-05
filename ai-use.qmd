@@ -8,7 +8,7 @@ This page is a work log, not a second report. Short bullets are welcome. It is s
 
 ## Starting point
 
-**AI system and date:** ChatGPT, November 2, 2026
+**AI system and date:** ChatGPT, November 4, 2026.
 
 **Before using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address.**
 
@@ -24,8 +24,6 @@ Paste the exact prompts that shaped the extension. Include the customized extens
 
 > What extension could help address this limitation? Preferably, I would like to use a method covered on Exam SRM but not in this course.
 
-> Replace with another exact prompt, if needed.
-
 ## My decisions
 
 - **Accepted:** We accepted the advice of using random forest to capture nonlinear relationship and possible interactions that may not be considered in the baseline model.
@@ -38,15 +36,15 @@ The extension's method will appear in the "**A new direction with AI**" section 
 
 ## Independent verification
 
-1.  **Check and result:** Replace with an official source, diagnostic, simulation, manual calculation, comparison with a known method, or another suitable check.
-2.  **Check and result:** Replace with a different check and what you learned.
+1.  **Check and result:** We will check the code written by AI using the official document for the R package randomForest. Specifically, we will verify how random forest regressions generate predictions and what each parameter is doing in the code. We will compare the AI-generated code with the document. Link to the document: <https://cran.r-project.org/web/packages/randomForest/randomForest.pdf>. This is a planned comparison and has nor been completed yet.
+2.  **Check and result:** We will also compare the cross-validated RMSE of the random forest regression model with that of our baseline model. If the random forest regression model had a significantly smaller cross-validated RMSE, we could know that there are some elements that the baseline model fail to capture. If there was not a big difference in the cross-validated RMSE, then we could know that a more complicated model is not necessary.
 
 Link or cite verification sources where appropriate. A second AI response does not count as independent verification.
 
 ## Remaining limitation
 
-**State one important uncertainty, failure mode, or limitation that remains.**
+Even if the random forest regression model predicts new data better than the baseline model, there is still some limitations. An obvious limitation is that a random forest regression model is harder to interpret than a regression model. The random forest does not provide coefficients that describe the change in response when one predictors changes after accounting for other predictors. A random forest also does not test the significance of coefficients. We will still use regression as our main tool, but we will add some nonlinear terms and interaction terms to our regression model.
 
 ## Other AI use, if any
 
-**Briefly disclose earlier debugging, proofreading, or other AI assistance. Write “None” if there was no other use.**
+We also used Copilot and ChatGPT in this project, primarily for debugging code as well as asking it a few higher-level concept questions about the ideas at play to make sure we were on the right track and understood everything properly.

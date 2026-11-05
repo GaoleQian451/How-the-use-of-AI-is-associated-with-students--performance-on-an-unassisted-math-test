@@ -2681,7 +2681,7 @@ font-size: 0.88rem;
 <p>This page is a work log, not a second report. Short bullets are welcome. It is separate from the final case study and does not count toward the 750 to 1,000 word range.</p>
 <section id="starting-point" class="level2">
 <h2 class="anchored" data-anchor-id="starting-point">Starting point</h2>
-<p><strong>AI system and date:</strong> ChatGPT, November 2, 2026</p>
+<p><strong>AI system and date:</strong> ChatGPT, November 4, 2026.</p>
 <p><strong>Before using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address.</strong></p>
 <p>Our research question is how the use of AI is associated with students’ performance on an unassisted math test, holding previous GPA and grade level constant. There are three levels of AI use, including the control, GPT Base, and GPT Tutor. We use Session 1 data from non-honor classes. Our baseline model is a multiple linear regression model: <code>Part3Tot ~ Treatment arm + gpa_prev + Year</code>.</p>
 <p>Our baseline model estimate that for students with the same previous GPA and grade level, students in the GPT Tutor group score an average of 5.24% higher on an unassisted math test than students in the control group (p=0.0077), and students in the GPT Base group score an average of 0.55% lower on an unassisted math test than students in the control group (p=0.789). The baseline model explains about 31.9% of the variation in exam score.</p>
@@ -2692,9 +2692,6 @@ font-size: 0.88rem;
 <p>Paste the exact prompts that shaped the extension. Include the customized extension-selection prompt from the checkpoint and any important implementation follow-ups. Delete unused prompt blocks.</p>
 <blockquote class="blockquote">
 <p>What extension could help address this limitation? Preferably, I would like to use a method covered on Exam SRM but not in this course.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Replace with another exact prompt, if needed.</p>
 </blockquote>
 </section>
 <section id="my-decisions" class="level2">
@@ -2710,18 +2707,18 @@ font-size: 0.88rem;
 <section id="independent-verification" class="level2">
 <h2 class="anchored" data-anchor-id="independent-verification">Independent verification</h2>
 <ol type="1">
-<li><strong>Check and result:</strong> Replace with an official source, diagnostic, simulation, manual calculation, comparison with a known method, or another suitable check.</li>
-<li><strong>Check and result:</strong> Replace with a different check and what you learned.</li>
+<li><strong>Check and result:</strong> We will check the code written by AI using the official document for the R package randomForest. Specifically, we will verify how random forest regressions generate predictions and what each parameter is doing in the code. We will compare the AI-generated code with the document. Link to the document: <a href="https://cran.r-project.org/web/packages/randomForest/randomForest.pdf" class="uri">https://cran.r-project.org/web/packages/randomForest/randomForest.pdf</a>. This is a planned comparison and has nor been completed yet.</li>
+<li><strong>Check and result:</strong> We will also compare the cross-validated RMSE of the random forest regression model with that of our baseline model. If the random forest regression model had a significantly smaller cross-validated RMSE, we could know that there are some elements that the baseline model fail to capture. If there was not a big difference in the cross-validated RMSE, then we could know that a more complicated model is not necessary.</li>
 </ol>
 <p>Link or cite verification sources where appropriate. A second AI response does not count as independent verification.</p>
 </section>
 <section id="remaining-limitation" class="level2">
 <h2 class="anchored" data-anchor-id="remaining-limitation">Remaining limitation</h2>
-<p><strong>State one important uncertainty, failure mode, or limitation that remains.</strong></p>
+<p>Even if the random forest regression model predicts new data better than the baseline model, there is still some limitations. An obvious limitation is that a random forest regression model is harder to interpret than a regression model. The random forest does not provide coefficients that describe the change in response when one predictors changes after accounting for other predictors. A random forest also does not test the significance of coefficients. We will still use regression as our main tool, but we will add some nonlinear terms and interaction terms to our regression model.</p>
 </section>
 <section id="other-ai-use-if-any" class="level2">
 <h2 class="anchored" data-anchor-id="other-ai-use-if-any">Other AI use, if any</h2>
-<p><strong>Briefly disclose earlier debugging, proofreading, or other AI assistance. Write “None” if there was no other use.</strong></p>
+<p>We also used Copilot and ChatGPT in this project, primarily for debugging code as well as asking it a few higher-level concept questions about the ideas at play to make sure we were on the right track and understood everything properly.</p>
 
 
 </section>

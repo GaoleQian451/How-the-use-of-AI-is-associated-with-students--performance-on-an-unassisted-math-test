@@ -11,14 +11,14 @@
     "href": "ai-use.html#starting-point",
     "title": "AI Use and Verification",
     "section": "Starting point",
-    "text": "Starting point\nAI system and date: ChatGPT, November 2, 2026\nBefore using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address.\nOur research question is how the use of AI is associated with students’ performance on an unassisted math test, holding previous GPA and grade level constant. There are three levels of AI use, including the control, GPT Base, and GPT Tutor. We use Session 1 data from non-honor classes. Our baseline model is a multiple linear regression model: Part3Tot ~ Treatment arm + gpa_prev + Year.\nOur baseline model estimate that for students with the same previous GPA and grade level, students in the GPT Tutor group score an average of 5.24% higher on an unassisted math test than students in the control group (p=0.0077), and students in the GPT Base group score an average of 0.55% lower on an unassisted math test than students in the control group (p=0.789). The baseline model explains about 31.9% of the variation in exam score.\nA limitation is that the baseline model assumes that the group effect of AI use is the same across the range of previous GPA and grade level in our sample. However, our box plots suggest that the group effect of AI use may differ for different grade levels. We want to use an extension to address this limitation."
+    "text": "Starting point\nAI system and date: ChatGPT, November 4, 2026.\nBefore using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address.\nOur research question is how the use of AI is associated with students’ performance on an unassisted math test, holding previous GPA and grade level constant. There are three levels of AI use, including the control, GPT Base, and GPT Tutor. We use Session 1 data from non-honor classes. Our baseline model is a multiple linear regression model: Part3Tot ~ Treatment arm + gpa_prev + Year.\nOur baseline model estimate that for students with the same previous GPA and grade level, students in the GPT Tutor group score an average of 5.24% higher on an unassisted math test than students in the control group (p=0.0077), and students in the GPT Base group score an average of 0.55% lower on an unassisted math test than students in the control group (p=0.789). The baseline model explains about 31.9% of the variation in exam score.\nA limitation is that the baseline model assumes that the group effect of AI use is the same across the range of previous GPA and grade level in our sample. However, our box plots suggest that the group effect of AI use may differ for different grade levels. We want to use an extension to address this limitation."
   },
   {
     "objectID": "ai-use.html#substantive-prompts",
     "href": "ai-use.html#substantive-prompts",
     "title": "AI Use and Verification",
     "section": "Substantive prompts",
-    "text": "Substantive prompts\nPaste the exact prompts that shaped the extension. Include the customized extension-selection prompt from the checkpoint and any important implementation follow-ups. Delete unused prompt blocks.\n\nWhat extension could help address this limitation? Preferably, I would like to use a method covered on Exam SRM but not in this course.\n\n\nReplace with another exact prompt, if needed."
+    "text": "Substantive prompts\nPaste the exact prompts that shaped the extension. Include the customized extension-selection prompt from the checkpoint and any important implementation follow-ups. Delete unused prompt blocks.\n\nWhat extension could help address this limitation? Preferably, I would like to use a method covered on Exam SRM but not in this course."
   },
   {
     "objectID": "ai-use.html#my-decisions",
@@ -32,21 +32,21 @@
     "href": "ai-use.html#independent-verification",
     "title": "AI Use and Verification",
     "section": "Independent verification",
-    "text": "Independent verification\n\nCheck and result: Replace with an official source, diagnostic, simulation, manual calculation, comparison with a known method, or another suitable check.\nCheck and result: Replace with a different check and what you learned.\n\nLink or cite verification sources where appropriate. A second AI response does not count as independent verification."
+    "text": "Independent verification\n\nCheck and result: We will check the code written by AI using the official document for the R package randomForest. Specifically, we will verify how random forest regressions generate predictions and what each parameter is doing in the code. We will compare the AI-generated code with the document. Link to the document: https://cran.r-project.org/web/packages/randomForest/randomForest.pdf. This is a planned comparison and has nor been completed yet.\nCheck and result: We will also compare the cross-validated RMSE of the random forest regression model with that of our baseline model. If the random forest regression model had a significantly smaller cross-validated RMSE, we could know that there are some elements that the baseline model fail to capture. If there was not a big difference in the cross-validated RMSE, then we could know that a more complicated model is not necessary.\n\nLink or cite verification sources where appropriate. A second AI response does not count as independent verification."
   },
   {
     "objectID": "ai-use.html#remaining-limitation",
     "href": "ai-use.html#remaining-limitation",
     "title": "AI Use and Verification",
     "section": "Remaining limitation",
-    "text": "Remaining limitation\nState one important uncertainty, failure mode, or limitation that remains."
+    "text": "Remaining limitation\nEven if the random forest regression model predicts new data better than the baseline model, there is still some limitations. An obvious limitation is that a random forest regression model is harder to interpret than a regression model. The random forest does not provide coefficients that describe the change in response when one predictors changes after accounting for other predictors. A random forest also does not test the significance of coefficients. We will still use regression as our main tool, but we will add some nonlinear terms and interaction terms to our regression model."
   },
   {
     "objectID": "ai-use.html#other-ai-use-if-any",
     "href": "ai-use.html#other-ai-use-if-any",
     "title": "AI Use and Verification",
     "section": "Other AI use, if any",
-    "text": "Other AI use, if any\nBriefly disclose earlier debugging, proofreading, or other AI assistance. Write “None” if there was no other use."
+    "text": "Other AI use, if any\nWe also used Copilot and ChatGPT in this project, primarily for debugging code as well as asking it a few higher-level concept questions about the ideas at play to make sure we were on the right track and understood everything properly."
   },
   {
     "objectID": "index.html",

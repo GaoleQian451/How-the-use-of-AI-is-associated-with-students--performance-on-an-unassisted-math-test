@@ -1,7 +1,7 @@
 ---
 title: "AI Use and Verification"
 description: "A concise record of AI-supported work on this project."
-author: "Replace with all group members' names"
+author: "Brandon Patillo, Leon Qian, Atticus Rexroat"
 ---
 
 This page is a work log, not a second report. Short bullets are welcome. It is separate from the final case study and does not count toward the 750 to 1,000 word range.
@@ -26,9 +26,9 @@ Paste the exact prompts that shaped the extension. Include the customized extens
 
 ## My decisions
 
-- **Accepted:** We accepted the advice of using random forest to capture nonlinear relationship and possible interactions that may not be considered in the baseline model.
+- **Accepted:** We accepted the advice to use random forest to capture nonlinear relationship and possible interactions that may not be considered in the baseline model.
 - **Changed:** We narrowed the suggested extension to a comparison using the same response and predictors as our baseline model. We plan to compare predictive performance using the same cross-validation folds while keeping linear regression central to our analysis.
-- **Rejected or corrected:** We have not identified a error in the AI response yet. We are not going to plot the group differences as suggested by AI until we better understand how to interpret it better.
+- **Rejected or corrected:** We have not identified an error in the AI response yet. We are not going to plot the group differences as suggested by AI until we better understand how to interpret it.
 
 **Connection to the final case study:** Identify where the extension's method and result appear on the final page and how they strengthen the course-based analysis.
 
@@ -36,8 +36,8 @@ The extension's method will appear in the "**A new direction with AI**" section 
 
 ## Independent verification
 
-1.  **Check and result:** We will check the code written by AI using the official document for the R package randomForest. Specifically, we will verify how random forest regressions generate predictions and what each parameter is doing in the code. We will compare the AI-generated code with the document. Link to the document: <https://cran.r-project.org/web/packages/randomForest/randomForest.pdf>. This is a planned comparison and has nor been completed yet.
-2.  **Check and result:** We will also compare the cross-validated RMSE of the random forest regression model with that of our baseline model. If the random forest regression model had a significantly smaller cross-validated RMSE, we could know that there are some elements that the baseline model fail to capture. If there was not a big difference in the cross-validated RMSE, then we could know that a more complicated model is not necessary.
+1.  **Check and result:** We will check the code written by AI using the official document for the R package randomForest. Specifically, we will verify how random forest regressions generate predictions and what each parameter is doing in the code. We will compare the AI-generated code with the document. Link to the document: <https://cran.r-project.org/web/packages/randomForest/randomForest.pdf>. This is a planned comparison and has not been completed yet.
+2.  **Check and result:** We will also compare the cross-validated RMSE of the random forest regression model with that of our baseline model. If the random forest regression model had a significantly smaller cross-validated RMSE, we would know that there are some elements that the baseline model fail to capture. If there was not a big difference in the cross-validated RMSE, then we could know that a more complicated model is not necessary.
 
 Link or cite verification sources where appropriate. A second AI response does not count as independent verification.
 

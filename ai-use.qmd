@@ -26,7 +26,7 @@ Paste the exact prompts that shaped the extension. Include the customized extens
 
 ## My decisions
 
-- **Accepted:** We accepted the advice to use random forest to capture nonlinear relationship and possible interactions that may not be considered in the baseline model.
+- **Accepted:** We accepted the advice of using random forest to capture nonlinear relationship and possible interactions that may not be considered in the baseline model.
 - **Changed:** We narrowed the suggested extension to a comparison using the same response and predictors as our baseline model. We plan to compare predictive performance using the same cross-validation folds while keeping linear regression central to our analysis.
 - **Rejected or corrected:** We have not identified an error in the AI response yet. We are not going to plot the group differences as suggested by AI until we better understand how to interpret it.
 
@@ -37,13 +37,13 @@ The extension's method will appear in the "**A new direction with AI**" section 
 ## Independent verification
 
 1.  **Check and result:** We will check the code written by AI using the official document for the R package randomForest. Specifically, we will verify how random forest regressions generate predictions and what each parameter is doing in the code. We will compare the AI-generated code with the document. Link to the document: <https://cran.r-project.org/web/packages/randomForest/randomForest.pdf>. This is a planned comparison and has not been completed yet.
-2.  **Check and result:** We will also compare the cross-validated RMSE of the random forest regression model with that of our baseline model. If the random forest regression model had a significantly smaller cross-validated RMSE, we would know that there are some elements that the baseline model fail to capture. If there was not a big difference in the cross-validated RMSE, then we could know that a more complicated model is not necessary.
+2.  **Check and result:** Rather than blindly trusting the AI output, we will copy all AI code and run it ourselves in R-studio and/ or positron. This will allow us to verify that the AI code is accurate and runs how we want it to, as well as verify that the expected output of the AI code is accurate. We will also compare the cross-validated RMSE of the random forest regression model with that of our baseline model. If the random forest regression model had a significantly smaller cross-validated RMSE, we could know that there are some elements that the baseline model fail to capture. If there was not a big difference in the cross-validated RMSE, then we could know that a more complicated model is not necessary.
 
 Link or cite verification sources where appropriate. A second AI response does not count as independent verification.
 
 ## Remaining limitation
 
-Even if the random forest regression model predicts new data better than the baseline model, there is still some limitations. An obvious limitation is that a random forest regression model is harder to interpret than a regression model. The random forest does not provide coefficients that describe the change in response when one predictors changes after accounting for other predictors. A random forest also does not test the significance of coefficients. We will still use regression as our main tool, but we will add some nonlinear terms and interaction terms to our regression model.
+Even if the random forest regression model predicts new data better than the baseline model, there is still some limitations. An obvious limitation is that a random forest regression model is harder to interpret than a regression model. The random forest does not provide coefficients that describe the change in response when one predictor changes after accounting for other predictors. A random forest also does not test the significance of coefficients. We will still use regression as our main tool, but we will add some nonlinear terms and interaction terms to our regression model.
 
 ## Other AI use, if any
 

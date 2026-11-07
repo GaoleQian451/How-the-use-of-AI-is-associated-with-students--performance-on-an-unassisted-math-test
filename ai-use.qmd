@@ -26,8 +26,8 @@ Paste the exact prompts that shaped the extension. Include the customized extens
 
 ## My decisions
 
-- **Accepted:** We accepted the advice of using random forest to capture nonlinear relationship and possible interactions that may not be considered in the baseline model.
-- **Changed:** We adjusted AI's suggestion and plan to compare the random forest model with the baseline model using the same response and explanation variable. We will also compare their predictive ability using the same cross-validation folds and keep the regression model as our main tool.
+- **Accepted:** We accepted the advice of using random forest to capture nonlinear relationship and possible interactions that may not be considered in the baseline model. We also accepted AI's suggestions of comparing the random forest model with the baseline model using the same response and explanation variable and comparing their predictive ability using the same cross-validation folds
+- **Changed:** We will still use the regression model as our main tool.
 - **Rejected or corrected:** We have not identified an error in the AI response yet. We are not going to plot the group differences as suggested by AI until we better understand how to interpret it.
 
 **Connection to the final case study:** Identify where the extension's method and result appear on the final page and how they strengthen the course-based analysis.

@@ -1,7 +1,7 @@
 ---
 title: "AI Use and Verification"
 description: "A concise record of AI-supported work on this project."
-author: "Brandon Patillo, Leon Qian, Atticus Rexroat"
+author: "Brandon Patillo, Gaole Qian, Atticus Rexroat"
 ---
 
 This page is a work log, not a second report. Short bullets are welcome. It is separate from the final case study and does not count toward the 750 to 1,000 word range.
@@ -27,7 +27,7 @@ Paste the exact prompts that shaped the extension. Include the customized extens
 ## My decisions
 
 - **Accepted:** We accepted the advice of using random forest to capture nonlinear relationship and possible interactions that may not be considered in the baseline model.
-- **Changed:** We narrowed the suggested extension to a comparison using the same response and predictors as our baseline model. We plan to compare predictive performance using the same cross-validation folds while keeping linear regression central to our analysis.
+- **Changed:** We adjusted AI's suggestion and plan to compare the random forest model with the baseline model using the same response and explanation variable. We will also compare their predictive ability using the same cross-validation folds and keep the regression model as our main tool.
 - **Rejected or corrected:** We have not identified an error in the AI response yet. We are not going to plot the group differences as suggested by AI until we better understand how to interpret it.
 
 **Connection to the final case study:** Identify where the extension's method and result appear on the final page and how they strengthen the course-based analysis.

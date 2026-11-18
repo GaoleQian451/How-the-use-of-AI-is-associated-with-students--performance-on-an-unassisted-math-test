@@ -24,11 +24,35 @@ AI may make the study process more efficient. However, not all forms of AI usage
 
 ```{r}
 # Load packages and data, document preparation, and fit the baseline.
+library(tidyverse)
+library(ggplot2)
+
+learning_orig <- read.csv(
+  "https://cmustatistics.github.io/data-repository/data/ai-learning.csv",
+  check.names = FALSE
+)
+
+learning <- subset(learning_orig, Session == 1 & Honors == 0)
+
+learning$`Treatment arm` <- factor(learning$`Treatment arm`)
+learning$`Treatment arm` <- relevel(learning$`Treatment arm`, ref = "control")
+
+baseline <- lm(Part3Tot ~ `Treatment arm` + gpa_prev + Year, data = learning)
+
+summary(baseline)
 ```
 
 ```{r}
 # Show a primary figure or table only if it helps answer the question.
 ```
+
+Fitted Baseline Model:
+
+$$
+\widehat{Part3Tot_i}=-1.738148+0.052384I(Teatment arm_i=augmented)-0.005518 I(Treatmentarm_i=vanilla)+ 1.518148 gpaprev_i+0.087879Year_i
+$$
+
+Part3Tot is the decimal score for an unassisted math test. Treatment arm describes which AI usage is assigned to a student. Control is the reference group. Augmented is GPT Tutor and vanilla is GPT Base. For students with the same previous GPA and in the same grade level, we estimate that students who use GPT Tutor score, on average, 5.2384 percentage points higher and students who use GPT Base score, on average, 0.5518 percentage points lower on the unassisted math test than students in the control group
 
 ## Going beyond the baseline
 

@@ -16,7 +16,7 @@ This template suggests one way to tell the story. You may rename, combine, or re
 
 **In one or two short paragraphs, introduce the setting, audience, focused research question, data source, observational unit, response, important predictors, and one important data limitation. Lead with what makes the question worth answering.**
 
-AI may make the study process more efficient. However, not all forms of AI usage are as effective. comparing unassisted test scores across AI groups can help math instructors make better decisions about how to use AI in class. We obtained the AI Learning dataset from [Carnegie Mellon Statistics & Data Science Data Repository](https://cmustatistics.github.io/data-repository/technology/ai-learning.html). This study uses data from Turkish high school students from grade 9 to 11. Students did practice problems with three different sources, including standard sources such as their notebooks and textbooks, GPT Base, and GPT Tutor. GPT Base offered general AI help, while GPT Tutor could provide students with hints without giving the solution directly. We only use the test scores in session one and from non-honors classes. The primary research question is how different uses of AI are associated with unassisted math test scores, after accounting for previous GPA and grade level. The observational unit is an individual high school student. The response is a student's unassisted math test decimal score (ranges from 0.00 to 1.00). Important predictors include AI use group, previous GPA, and grade level. Since we only use data from session 1, we only study students' immediate performance and cannot track their long-term performance.
+AI may make the study process more efficient. However, not all forms of AI usage are as effective. Comparing unassisted test scores across AI groups can help math instructors make better decisions about how to use AI in class. We obtained the AI Learning dataset from[ Carnegie Mellon Statistics & Data Science Data Repository](https://cmustatistics.github.io/data-repository/technology/ai-learning.html). This study uses data from Turkish high school students from grades 9 to 11. Students did practice problems with three different sources, including standard sources such as their notebooks and textbooks, GPT Base, and GPT Tutor. GPT Base offered general AI help, while GPT Tutor could provide students with hints without giving the solution directly. We only use the test scores in session one and from non-honors classes. The primary research question is how different uses of AI are associated with unassisted math test scores, after accounting for previous GPA and grade level. The observational unit is an individual high school student. The response is a student's unassisted math test decimal score (ranging from 0.00 to 1.00). Important predictors include AI use group, previous GPA, and grade level. Since we only use data from session 1, we only study students' immediate performance and cannot track their long-term performance.
 
 ## What the baseline shows
 
@@ -26,7 +26,9 @@ AI may make the study process more efficient. However, not all forms of AI usage
 # Load packages and data, document preparation, and fit the baseline.
 library(tidyverse)
 library(ggplot2)
-
+library(car)
+library(broom)
+library(car)
 learning_orig <- read.csv(
   "https://cmustatistics.github.io/data-repository/data/ai-learning.csv",
   check.names = FALSE
@@ -40,10 +42,78 @@ learning$`Treatment arm` <- relevel(learning$`Treatment arm`, ref = "control")
 baseline <- lm(Part3Tot ~ `Treatment arm` + gpa_prev + Year, data = learning)
 
 summary(baseline)
+
+confint(baseline)
 ```
 
 ```{r}
 # Show a primary figure or table only if it helps answer the question.
+library(ggplot2)
+
+ggplot(learning, aes(x = `Treatment arm`, y = Part3Tot, fill = `Treatment arm`)) +
+  geom_boxplot(width = 0.65) +
+  facet_wrap(~ Year) +
+  scale_fill_manual(
+    values = c(
+      "control" = "#0072B2",
+      "vanilla" = "#E69F00",
+      "augmented" = "#009E73"
+    ),
+    guide = "none"
+  ) +
+  scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.2)) +
+  labs(
+    title = "Unassisted exam scores by study group and grade",
+    subtitle = "Session 1 students in non-honors classes",
+    x = "AI group",
+    y = "Unassisted exam score"
+  ) +
+  theme_minimal()
+
+learning_aug <- model.frame(baseline) |>
+  mutate(
+    fitted = fitted(baseline),
+    residual = resid(baseline)
+  )
+
+learning_aug |>
+  ggplot(aes(x = fitted, y = residual)) +
+  geom_point(alpha = 0.6) +
+  geom_hline(yintercept = 0, color = "#2f5f8f") +
+  labs(
+    x = "Fitted exam score",
+    y = "Residual"
+  )
+
+avPlots(baseline)
+
+learning_aug |>
+  ggplot(aes(x =residual)) +
+  geom_histogram(aes(y = after_stat(density)), bins = 25, fill = "#d7d1c8", color = "white") +
+  stat_function(
+    fun = dnorm,
+    args = list(mean = mean(learning_aug$residual), sd = sd(learning_aug$residual)),
+    color = "#2f5f8f", linewidth = 1.1
+  ) +
+  labs(x = "Residual", y = "Density", title = "Residual histogram")
+
+learning_aug1 <- model.frame(baseline) |>
+  mutate(std_residual = rstandard(baseline))
+
+ggplot(learning_aug1, aes(sample = std_residual)) +
+  stat_qq(alpha = 0.6) +
+  stat_qq_line(color = "#2f5f8f", linewidth = 1) +
+  labs(x = "Theoretical quantiles", y = "Standardized residual quantiles", title = "Normal Q-Q plot")
+
+learning_aug1 |>
+  ggplot(aes(x = fitted(baseline), y = sqrt(abs(std_residual)))) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(se = FALSE, color = "#9b3d2e", linewidth = 0.9) +
+  labs(
+    x = "Fitted salary",
+    y = expression(sqrt("|Standardized residual|")),
+    title = "Scale-location plot"
+  )
 ```
 
 Fitted Baseline Model:
@@ -52,7 +122,9 @@ $$
 \widehat{Part3Tot_i}=-1.738148+0.052384I(Teatment arm_i=augmented)-0.005518 I(Treatmentarm_i=vanilla)+ 1.518148 gpaprev_i+0.087879Year_i
 $$
 
-Part3Tot is the decimal score for an unassisted math test. Treatment arm describes which AI usage is assigned to a student. Control is the reference group. Augmented is GPT Tutor and vanilla is GPT Base. For students with the same previous GPA and in the same grade level, we estimate that students who use GPT Tutor score, on average, 5.2384 percentage points higher and students who use GPT Base score, on average, 0.5518 percentage points lower on the unassisted math test than students in the control group
+Part3Tot is the decimal score for an unassisted math test. Treatment arm describes which AI usage is assigned to a student. Control is the reference group. Augmented is GPT Tutor and vanilla is GPT Base. For students with the same previous GPA and in the same grade level, we estimate that students who use GPT Tutor score, on average, 5.2384 percentage points higher (95% CI: \[0.01390679, 0.09086202\]) and students who use GPT Base score, on average, 0.5518 percentage points lower (95% CI: \[-0.04598120, 0.03494489\] on the unassisted math test than students in the control group. The confidence interval for GPT Base contains 0, so our data does not provide enough evidence for a significant difference in average scores between GPT Base and control, holding previous GPA and grade level constant.
+
+Interaction between grade level and AI groups is an unsolved limitation in the baseline model. In grade 9, GPT Base group has a lower median than the control and GPT Tutor group, while in grade 10, GPT Base group has a much higher median than the other two groups. In grade 11, the GPT Base group has a much lower median than the other two groups. These patterns suggest a possible interaction between AI group and grade level.
 
 ## Going beyond the baseline
 
